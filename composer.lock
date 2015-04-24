@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d50fd8cc113a6e54742b4b3e7e78276c",
+    "hash": "5bfcb75e4b2a8c19817148dc89dcfbb2",
     "packages": [
         {
             "name": "boehsermoe/yii2-neo4j",
@@ -12,15 +12,16 @@
             "source": {
                 "type": "git",
                 "url": "../neo4j",
-                "reference": "766a27e38475350cf21cef53b24b17f7ccb64491"
+                "reference": "fb13156d6176df3bb1f0f8dd9c31b0ae0779321a"
             },
             "require": {
+                "everyman/neo4jphp": "dev-master",
                 "yiisoft/yii2": "*"
             },
             "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
-                    "yii\\neo4j\\": ""
+                    "neo4j\\": ""
                 }
             },
             "authors": [
@@ -35,14 +36,7 @@
                 "graph",
                 "yii2"
             ],
-            "support": {
-                "issues": "https://github.com/yiisoft/yii2/issues?labels=ext%3Aneo4j",
-                "forum": "http://www.yiiframework.com/forum/",
-                "wiki": "http://www.yiiframework.com/wiki/",
-                "irc": "irc://irc.freenode.net/yii",
-                "source": "https://github.com/boehsermoe/neo4j"
-            },
-            "time": "2015-04-24 13:46:36"
+            "time": "2015-04-24 16:08:19"
         },
         {
             "name": "cebe/markdown",
@@ -102,6 +96,55 @@
                 "markdown-extra"
             ],
             "time": "2014-03-05 16:30:51"
+        },
+        {
+            "name": "everyman/neo4jphp",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jadell/neo4jphp.git",
+                "reference": "d20365b6f23a8a9ac42e66b021180c6ac2c6de2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jadell/neo4jphp/zipball/d20365b6f23a8a9ac42e66b021180c6ac2c6de2a",
+                "reference": "d20365b6f23a8a9ac42e66b021180c6ac2c6de2a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phing/phing": "2.6.*",
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Everyman\\Neo4j": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Adell",
+                    "email": "josh.adell@gmail.com",
+                    "homepage": "http://joshadell.com"
+                }
+            ],
+            "description": "Wrapper for the Neo4j graph database REST interface",
+            "homepage": "http://github.com/jadell/neo4jphp/wiki",
+            "keywords": [
+                "database",
+                "graph",
+                "neo4j"
+            ],
+            "time": "2015-03-28 20:32:20"
         },
         {
             "name": "ezyang/htmlpurifier",

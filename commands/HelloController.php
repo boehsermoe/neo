@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use neo4j\console\controllers\CypherController;
 use yii\console\Controller;
 
 /**
@@ -17,14 +18,7 @@ use yii\console\Controller;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class HelloController extends Controller
+class HelloController extends CypherController
 {
-    /**
-     * This command echoes what you have entered as the message.
-     * @param string $message the message to be echoed.
-     */
-    public function actionIndex($message = 'hello world')
-    {
-        echo $message . "\n";
-    }
+
 }
