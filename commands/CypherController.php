@@ -8,18 +8,38 @@ use yii\console\Controller;
 
 class CypherController extends Controller
 {
-	public function actionIndex()
+	public function actionCreate($username)
 	{
 		Yii::$app->db->open();
 
-		#User::deleteAll();
+		$record = new User();
 
-		$record = User::find()->one();
-		$record->username = 'foo';
-		#$record->insert();
+		$record->username = $username;
 
-		$record->password = date('Y-m-d H:i:s');
-		$record->update();
+		$record->save();
+
+		Yii::$app->db->close();
+	}
+
+	public function actionUpdate($old, $new)
+	{
+		Yii::$app->db->open();
+
+
+		$record = User::find()->andOnCondition(['username' => $old])->one();
+
+		$record->username = $new;
+
+		$record->save();
+
+		Yii::$app->db->close();
+	}
+
+	public function actionClear()
+	{
+		Yii::$app->db->open();
+
+		User::deleteAll();
 
 		Yii::$app->db->close();
 	}
