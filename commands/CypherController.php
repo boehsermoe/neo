@@ -12,10 +12,13 @@ class CypherController extends Controller
 	{
 		Yii::$app->db->open();
 
-		$record = new User();
+		#User::deleteAll();
+
+		$record = User::find()->one();
 		$record->username = 'foo';
-		$record->password = 'bar';
-		$record->insert();
+		#$record->insert();
+
+		$record->password = date('Y-m-d H:i:s');
 		$record->update();
 
 		Yii::$app->db->close();

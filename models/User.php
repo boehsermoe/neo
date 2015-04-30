@@ -4,6 +4,16 @@ namespace app\models;
 
 use neo4j\db\ActiveRecord;
 
+/**
+ * Class User
+ * @package app\models
+ *
+ * @property integer $id
+ * @property string $username
+ * @property string $password
+ * @property string $authKey
+ * @property string $accessToken
+ */
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
     public $id;
@@ -29,6 +39,13 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         ],
     ];
 
+	public function rules()
+	{
+		return [
+			[['username'], 'required'],
+		];
+	}
+
     /**
      * @inheritdoc
      */
@@ -44,23 +61,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         foreach (self::$users as $user) {
             if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param  string      $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
                 return new static($user);
             }
         }
