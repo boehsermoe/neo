@@ -8,8 +8,6 @@
  * @license http://www.yiiframework.com/license/
  */
 
-error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
-
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 
 // fcgi doesn't have STDIN and STDOUT defined by default

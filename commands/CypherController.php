@@ -10,37 +10,43 @@ class CypherController extends Controller
 {
 	public function actionCreate($username)
 	{
-		Yii::$app->db->open();
-
 		$record = new User();
 
 		$record->username = $username;
 
 		$record->save();
-
-		Yii::$app->db->close();
 	}
 
 	public function actionUpdate($old, $new)
 	{
-		Yii::$app->db->open();
+		/** @var $user User */
+		$user = User::find()->andWhere(['username' => $old])->one();
 
+		if ($user)
+		{
+			$user->username = $new;
+			$user->save();
+		}
+		else
+		{
+			echo "$old not found\n";
+		}
+	}
 
-		$record = User::find()->andOnCondition(['username' => $old])->one();
+	public function actionFind($name)
+	{
+		$users = User::find()->andWhere(['username' => $name])->all();
 
-		$record->username = $new;
-
-		$record->save();
-
-		Yii::$app->db->close();
+		foreach ($users as $user)
+		{
+			var_dump($user->getAttributes());
+		}
 	}
 
 	public function actionClear()
 	{
-		Yii::$app->db->open();
+		$count = User::deleteAll();
 
-		User::deleteAll();
-
-		Yii::$app->db->close();
+		echo "$count users deleted\n";
 	}
 }
