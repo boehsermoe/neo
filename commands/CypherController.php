@@ -3,6 +3,7 @@
 namespace app\commands;
 
 use app\models\User;
+use app\models\UserDetail;
 use yii;
 use yii\console\Controller;
 
@@ -10,11 +11,15 @@ class CypherController extends Controller
 {
 	public function actionCreate($username)
 	{
-		$record = new User();
+		$user = new User();
+		$user->username = $username;
+		$user->save();
 
-		$record->username = $username;
+		$detail = new UserDetail();
+		$detail->name = 'Detail1';
+		$detail->save();
 
-		$record->save();
+		$user->link('details', $detail);
 	}
 
 	public function actionUpdate($old, $new)
@@ -43,10 +48,20 @@ class CypherController extends Controller
 		}
 	}
 
+	public function actionFindDetail($name)
+	{
+		$models = UserDetail::find()->with('user')->andWhere(['name' => $name])->all();
+
+		foreach ($models as $model)
+		{
+			var_dump($model->getAttributes());
+		}
+	}
+
 	public function actionClear()
 	{
 		$count = User::deleteAll();
 
-		echo "$count users deleted\n";
+		echo "$count user(s) deleted\n";
 	}
 }

@@ -102,4 +102,9 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return $this->password === $password;
     }
+
+	public function getDetails()
+	{
+		return $this->hasMany(UserDetail::className(), ['HAS']);
+	}
 }
