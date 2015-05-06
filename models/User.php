@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use neo4j\db\ActiveQuery;
 use neo4j\db\ActiveRecord;
 
 /**
@@ -105,6 +106,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
 	public function getDetails()
 	{
-		return $this->hasMany(UserDetail::className(), ['HAS']);
+		return $this->hasMany(UserDetail::className(), ['HAS'], ActiveQuery::DIRECTION_OUT);
 	}
 }

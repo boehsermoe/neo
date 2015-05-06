@@ -9,12 +9,17 @@
 namespace app\models;
 
 
+use neo4j\db\ActiveQuery;
 use neo4j\db\ActiveRecord;
 
 class UserDetail extends ActiveRecord
 {
 	public $id;
-	public $userId;
 	public $name;
 	public $value;
+
+	public function getUser()
+	{
+		return $this->hasOne(UserDetail::className(), ['HAS'], ActiveQuery::DIRECTION_IN);
+	}
 }

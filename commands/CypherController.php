@@ -11,15 +11,17 @@ class CypherController extends Controller
 {
 	public function actionCreate($username)
 	{
-		$user = new User();
-		$user->username = $username;
-		$user->save();
+		#$user = new User();
+		#$user->username = $username;
+		#$user->save();
 
 		$detail = new UserDetail();
 		$detail->name = 'Detail1';
-		$detail->save();
+		#$detail->save();
 
-		$user->link('details', $detail);
+		#$user->link('details', $detail);
+
+		var_dump($detail->user);
 	}
 
 	public function actionUpdate($old, $new)
