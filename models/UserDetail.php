@@ -20,6 +20,6 @@ class UserDetail extends ActiveRecord
 
 	public function getUser()
 	{
-		return $this->hasOne(UserDetail::className(), ['HAS'], ActiveQuery::DIRECTION_IN);
+		return $this->hasOne(User::className(), ['HAS'], ActiveQuery::DIRECTION_IN);
 	}
 }

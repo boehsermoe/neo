@@ -11,18 +11,26 @@ class CypherController extends Controller
 {
 	public function actionCreate($username)
 	{
-		#$user = new User();
-		#$user->username = $username;
-		#$user->save();
+		$user = new User();
+		$user->username = $username;
+		$user->save();
 
 		$detail = new UserDetail();
-		$detail->name = 'Detail1';
-		#$detail->save();
+		$detail->name = 'Username';
+		$detail->value = $username;
+		$detail->save();
 
-		#$user->link('details', $detail);
+		$user->link('details', $detail);
+	}
+
+	public function actionUserViaDetail($username)
+	{
+		/** @var $detail UserDetail */
+		$detail = UserDetail::find()->andWhere(['name' => 'Username', 'value' => $username])->one();
 
 		var_dump($detail->user);
 	}
+
 
 	public function actionUpdate($old, $new)
 	{
