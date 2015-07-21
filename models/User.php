@@ -9,7 +9,6 @@ use neo4j\db\ActiveRecord;
  * Class User
  * @package app\models
  *
- * @property integer $id
  * @property string $username
  * @property string $password
  * @property string $authKey
@@ -17,7 +16,6 @@ use neo4j\db\ActiveRecord;
  */
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
-    public $id;
     public $username;
     public $password;
     public $authKey;
@@ -67,14 +65,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         }
 
         return null;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

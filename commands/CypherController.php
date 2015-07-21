@@ -9,15 +9,15 @@ use yii\console\Controller;
 
 class CypherController extends Controller
 {
-	public function actionCreate($username)
+	public function actionCreate($username, $age)
 	{
 		$user = new User();
 		$user->username = $username;
 		$user->save();
 
 		$detail = new UserDetail();
-		$detail->name = 'Username';
-		$detail->value = $username;
+		$detail->name = 'Age';
+		$detail->value = $age;
 		$detail->save();
 
 		$user->link('details', $detail);
@@ -70,8 +70,9 @@ class CypherController extends Controller
 
 	public function actionClear()
 	{
-		$count = User::deleteAll();
-
-		echo "$count user(s) deleted\n";
+		if (User::deleteAll())
+        {
+		    echo "All users deleted\n";
+        }
 	}
 }

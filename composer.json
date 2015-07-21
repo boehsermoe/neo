@@ -16,8 +16,8 @@
     "prefer-stable": true,
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": "*",
-        "yiisoft/yii2-bootstrap": "*",
+        "yiisoft/yii2": "2.0.*",
+        "yiisoft/yii2-bootstrap": "2.0.*",
         "yiisoft/yii2-swiftmailer": "*",
         "boehsermoe/yii2-neo4j": "*"
     },
