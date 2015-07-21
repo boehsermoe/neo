@@ -1,4 +1,4 @@
-Yii 2 Neo4j Extension - Example
+Yii 2 Neo4j Extension Template
 ================================
 
 This project is a template with some examples, how to use the boehsermoe/yii2-neo4j extension.
@@ -6,12 +6,6 @@ The extension make it easily to use Yii2 models with Neo4j database.
 The project structure based on the Yii 2 Basic Template.
 
 **Please note that this extension is currently just a experimental project.**
-
-REQUIREMENTS
-------------
-
-The minimum requirement by this application template that your Web server supports PHP 5.4.0.
-
 
 INSTALLATION
 ------------
@@ -35,8 +29,6 @@ directly under the Web root.
 ~~~
 http://localhost/basic/web/
 ~~~
-
-Does it works? Fine!
 
 CONFIGURATION
 -------------
@@ -69,7 +61,7 @@ return [
 ];
 ```
 
-Ok, your Neo4j Server is running and available?
+Is your Neo4j Server running and available?
 
 ~~~
 http://localhost:7474
