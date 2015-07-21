@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/boehsermoe/neo4j.git",
-                "reference": "874d17f9d760d89350cd9a8bbf9ff6f33c72662e"
+                "reference": "39abff98dcfdf20ce818f4c5c44b6bfb1fb1f742"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boehsermoe/neo4j/zipball/874d17f9d760d89350cd9a8bbf9ff6f33c72662e",
-                "reference": "874d17f9d760d89350cd9a8bbf9ff6f33c72662e",
+                "url": "https://api.github.com/repos/boehsermoe/neo4j/zipball/39abff98dcfdf20ce818f4c5c44b6bfb1fb1f742",
+                "reference": "39abff98dcfdf20ce818f4c5c44b6bfb1fb1f742",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 "graph",
                 "yii2"
             ],
-            "time": "2015-07-21 18:13:27"
+            "time": "2015-07-21 21:15:17"
         },
         {
             "name": "bower-asset/bootstrap",

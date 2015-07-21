@@ -1,10 +1,11 @@
 Yii 2 Neo4j Extension - Example
 ================================
 
-This project is a example, how to use the boehsermoe/yii2-neo4j extension.
-Please note that this extension is currently just a experimental project.
-
+This project is a template with some examples, how to use the boehsermoe/yii2-neo4j extension.
+The extension make it easily to use Yii2 models with Neo4j database.
 The project structure based on the Yii 2 Basic Template.
+
+**Please note that this extension is currently just a experimental project.**
 
 REQUIREMENTS
 ------------
