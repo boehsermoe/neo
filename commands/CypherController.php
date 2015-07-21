@@ -9,7 +9,12 @@ use yii\console\Controller;
 
 class CypherController extends Controller
 {
-	public function actionCreate($username, $age)
+    /**
+     * Insert a new User with age in the database
+     * @param string $username
+     * @param integer|string $age
+     */
+    public function actionCreate($username, $age)
 	{
 		$user = new User();
 		$user->username = $username;
@@ -21,18 +26,38 @@ class CypherController extends Controller
 		$detail->save();
 
 		$user->link('details', $detail);
+
+        echo "User created.\n";
 	}
 
-	public function actionUserViaDetail($username)
+    /**
+     * Find all User by age
+     * @param integer|string $age
+     */
+    public function actionFindByAge($age)
 	{
-		/** @var $detail UserDetail */
-		$detail = UserDetail::find()->andWhere(['name' => 'Username', 'value' => $username])->one();
+		/** @var $details UserDetail[] */
+		$details = UserDetail::find()->andWhere(['name' => 'Age', 'value' => $age])->all();
 
-		var_dump($detail->user);
+        if ($details)
+        {
+            foreach ($details as $detail)
+            {
+                var_dump($detail->user);
+            }
+        }
+        else
+        {
+            echo "UserDetail not found.\n";
+        }
 	}
 
-
-	public function actionUpdate($old, $new)
+    /**
+     * Rename a User in the database
+     * @param string $old The old username
+     * @param string $new The new username
+     */
+    public function actionUpdate($old, $new)
 	{
 		/** @var $user User */
 		$user = User::find()->andWhere(['username' => $old])->one();
@@ -48,31 +73,73 @@ class CypherController extends Controller
 		}
 	}
 
-	public function actionFind($name)
+    /**
+     * Find all User by name.
+     * @param $name
+     */
+    public function actionFind($name)
 	{
 		$users = User::find()->andWhere(['username' => $name])->all();
 
-		foreach ($users as $user)
-		{
-			var_dump($user->getAttributes());
-		}
+        if ($users)
+        {
+            foreach ($users as $user)
+            {
+                var_dump($user->getAttributes());
+            }
+        }
+        else
+        {
+            echo "User not found.\n";
+        }
 	}
 
-	public function actionFindDetail($name)
+    /**
+     * Find all UserDetail by name/type (not by value).
+     * @param $name
+     */
+    public function actionFindDetail($name)
 	{
 		$models = UserDetail::find()->with('user')->andWhere(['name' => $name])->all();
 
-		foreach ($models as $model)
-		{
-			var_dump($model->getAttributes());
-		}
+        if ($models)
+        {
+            foreach ($models as $model)
+            {
+                var_dump($model->getAttributes());
+            }
+        }
+        else
+        {
+            echo "UserDetail not found.\n";
+        }
 	}
 
-	public function actionClear()
+    /**
+     * Find all User by name.
+     * @param $name
+     */
+    public function actionDeleteUser($name)
+    {
+        $users = User::find()->andWhere(['username' => $name])->all();
+
+        foreach ($users as $user)
+        {
+            if ($user->delete())
+            {
+                echo "User deleted.\n";
+            }
+        }
+    }
+
+    /**
+     * Delete all Users from the database.
+     */
+    public function actionClear()
 	{
 		if (User::deleteAll())
         {
-		    echo "All users deleted\n";
+		    echo "All users deleted.\n";
         }
 	}
 }

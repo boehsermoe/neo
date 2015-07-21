@@ -14,7 +14,6 @@ use neo4j\db\ActiveRecord;
 
 class UserDetail extends ActiveRecord
 {
-	public $id;
 	public $name;
 	public $value;
 

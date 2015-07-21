@@ -1,30 +1,10 @@
-Yii 2 Basic Application Template
+Yii 2 Neo4j Extension - Example
 ================================
 
-Yii 2 Basic Application Template is a skeleton Yii 2 application best for
-rapidly creating small projects.
+This project is a example, how to use the boehsermoe/yii2-neo4j extension.
+Please note that this extension is currently just a experimental project.
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
-
-
-DIRECTORY STRUCTURE
--------------------
-
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
-
-
+The project structure based on the Yii 2 Basic Template.
 
 REQUIREMENTS
 ------------
@@ -35,57 +15,100 @@ The minimum requirement by this application template that your Web server suppor
 INSTALLATION
 ------------
 
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-You can then access the application through the following URL:
+### Clone from github
 
 ~~~
-http://localhost/basic/web/
+git clone git@github.com:boehsermoe/neo.git && cd neo && composer install
 ~~~
 
-
-### Install via Composer
-
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this application template using the following command:
+Maybe you need to adjust your directory permissions.
 
 ~~~
-php composer.phar global require "fxp/composer-asset-plugin:1.0.0"
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
+chmod -R 777 runtime/
+chmod -R 777 web/
 ~~~
 
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
+Now you should be able to access the application through the following URL, assuming `neo` is the directory
 directly under the Web root.
 
 ~~~
 http://localhost/basic/web/
 ~~~
 
+Does it works? Fine!
 
 CONFIGURATION
 -------------
 
+Now you have to configure your database connection.
+
+**NOTE:**
+The extension won't create the database for you, this has to be done manually before you can access it.
+See here for more information http://neo4j.com/developer/get-started/
+
 ### Database
 
-Edit the file `config/db.php` with real data, for example:
+Required following class in the file `config/db.php`:
 
 ```php
 return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
+    'class' => '\neo4j\db\Connection',
 ];
 ```
 
-**NOTE:** Yii won't create the database for you, this has to be done manually before you can access it.
+You can edit it with real data, for example:
 
-Also check and edit the other files in the `config/` directory to customize your application.
-=======
-# neo
+```php
+return [
+    'class' => '\neo4j\db\Connection',
+    'host' => 'localhost', // Default
+    'port' => 7474, // Default
+    'username' => 'neo4j', // Default
+    'password' => 'neo', // Default
+];
+```
+
+Ok, your Neo4j Server is running and available?
+
+~~~
+http://localhost:7474
+~~~
+
+
+Guide
+-------------
+
+### Models
+
+The `models/User.php` and `models/UserDetail.php` are the schema for the database nodes.
+A database node is mirrored by a Model. The class name is the node label. Each class property in the model is a node property in the database.
+
+In the model will be declared, how it is related to other models.
+A relationship consist of a the other `model class`, a `label` of the relationship and the `direction`.
+
+~~~
+public function getDetails()
+{
+	return $this->hasMany(UserDetail::className(), ['HAS'], ActiveQuery::DIRECTION_OUT);
+}
+~~~
+
+With implementations the extension can link one model to another.
+
+*More coming soon...*
+
+
+### Console Examples
+
+The examples are located in `commands/CypherController.php`, there you can experiment with the Neo4j-ActiveRecord.
+
+1. Step: Create a User *./yii cypher/create Neo 30*
+2. Step: Find the created User *./yii cypher/find Neo*
+3. Step: Delete the created User *./yii cypher/delete-user Neo*
+
+For more information:
+~~~
+./yii help cypher
+~~~
+
+*More coming soon...*
