@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/boehsermoe/neo4j.git",
-                "reference": "39abff98dcfdf20ce818f4c5c44b6bfb1fb1f742"
+                "reference": "c2cdf7bce7ebdab2b1ddd5d91c4659efa5d30884"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boehsermoe/neo4j/zipball/39abff98dcfdf20ce818f4c5c44b6bfb1fb1f742",
-                "reference": "39abff98dcfdf20ce818f4c5c44b6bfb1fb1f742",
+                "url": "https://api.github.com/repos/boehsermoe/neo4j/zipball/c2cdf7bce7ebdab2b1ddd5d91c4659efa5d30884",
+                "reference": "c2cdf7bce7ebdab2b1ddd5d91c4659efa5d30884",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 "graph",
                 "yii2"
             ],
-            "time": "2015-07-21 21:15:17"
+            "time": "2015-08-27 18:47:14"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -924,7 +924,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-faker/zipball/66432de272e5795435dc7da49381ea7bea2a2a67",
+                "url": "https://api.github.com/repos/yiisoft/yii2-faker/zipball/091bc3c5db9e53031817c6e155c0bd518f3606de",
                 "reference": "66432de272e5795435dc7da49381ea7bea2a2a67",
                 "shasum": ""
             },

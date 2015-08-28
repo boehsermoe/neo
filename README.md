@@ -39,6 +39,15 @@ Now you have to configure your database connection.
 The extension won't create the database for you, this has to be done manually before you can access it.
 See here for more information http://neo4j.com/developer/get-started/
 
+### index.php
+
+You have to disable E_STRICT error reporting in the `index.php`:
+
+```php
+error_reporting(E_ALL ^ E_STRICT);
+```
+
+
 ### Database
 
 Required following class in the file `config/db.php`:
